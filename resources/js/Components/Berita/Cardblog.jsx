@@ -1,5 +1,8 @@
 import { Head, Link } from '@inertiajs/react';
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Cardblog = () => {
   return (
@@ -15,10 +18,11 @@ const Cardblog = () => {
                 data-aos-duration="600"
                 data-aos-delay="300"
                 className="max-w-sm overflow-hidden transition duration-500 transform bg-white rounded shadow-lg dark:bg-gray-800 hover:scale-105">
-                <img
+                <LazyLoadImage
                   className="object-cover w-full h-48 transition-transform duration-500"
                   src="https://i.ytimg.com/vi/JT0lWPUWM9s/maxresdefault.jpg"
                   alt="news-image"
+                  loading="lazy"
                 />
                 <div className="p-4 transition-colors duration-500">
                   <h2 className="mb-2 text-xl font-bold text-gray-800 transition-colors duration-500 dark:text-white">

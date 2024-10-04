@@ -47,3 +47,7 @@ body::-webkit-scrollbar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }
+
+* {
+  @apply transition-colors duration-500;
+}

@@ -2,15 +2,21 @@ import React from 'react';
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import Mobilenav from '@/Components/Mobilenav';
+import PageLayout from '@/Components/PageLayout';
+import { AnimatePresence } from 'framer-motion';
 
 const Mainlayout = ({ auth, children }) => {
-  // console.log('auth', auth);
+  console.log(auth);
   return (
     <div>
       <Navbar auth={auth} />
-      <main className="transition duration-500 transform bg-gray-100 dark:bg-gray-900">
-        {children}
-      </main>
+      <AnimatePresence>
+        <main
+          key={window.location.pathname} // Menambahkan key untuk transisi
+          className="transition duration-500 transform bg-gray-100 dark:bg-gray-900">
+          <PageLayout>{children}</PageLayout>
+        </main>
+      </AnimatePresence>
       <Footer />
       <div className="flex-grow">
         <div className="block md:hidden">
@@ -23,30 +29,3 @@ const Mainlayout = ({ auth, children }) => {
 };
 
 export default Mainlayout;
-
-// import React from 'react';
-// import Navbar from '@/Components/Navbar';
-// import Footer from '@/Components/Footer';
-// import Mobilenav from '@/Components/Mobilenav';
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
-// const Mainlayout = ({ auth, children }) => {
-//   return (
-//     <TransitionGroup>
-//       <CSSTransition key={window.location.pathname} timeout={500} classNames="fade">
-//         <div>
-//           <Navbar auth={auth} />
-//           <main>{children}</main>
-//           <Footer />
-//           <div className="flex-grow">
-//             <div className="block md:hidden">
-//               <Mobilenav auth={auth} />
-//             </div>
-//           </div>
-//         </div>
-
-//     </TransitionGroup>
-//   );
-// };
-
-// export default Mainlayout;

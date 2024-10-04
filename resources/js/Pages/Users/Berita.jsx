@@ -7,12 +7,12 @@ import { Head } from '@inertiajs/react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const Berita = () => {
+const Berita = ({ auth }) => {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <>
+    <Mainlayout auth={auth}>
       <Head title="Berita" />
       <div className="flex flex-col min-h-screen transition duration-500 bg-gray-900 dark:bg-gray-100">
         <div
@@ -35,11 +35,11 @@ const Berita = () => {
           <Cardblog />
         </div>
       </div>
-    </>
+    </Mainlayout>
   );
 };
 
 // Berita.layout = (page) => <Mainlayout children={page} />;
-Berita.layout = (page) => <Mainlayout auth={page.props.auth}>{page}</Mainlayout>;
+// Berita.layout = (page) => <Mainlayout auth={page.props.auth}>{page}</Mainlayout>;
 
 export default Berita;
