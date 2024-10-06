@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
+use App\Http\Controllers\Admin\GaleryController;
+use App\Http\Controllers\Admin\PamongController;
+use App\Http\Controllers\Admin\PotensiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Users\AboutController;
 use App\Http\Controllers\Users\BeritaController;
@@ -40,22 +44,13 @@ Route::get('/layanan', fn() => Inertia::render('Users/Layanan'));
 Route::get('/potensi', fn() => Inertia::render('Users/PotensiPadukuhan'));
 Route::get('/kontak', fn() => Inertia::render('Users/Kontak'));
 
-
-Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/galeri', fn() => Inertia::render('Admin/Gallery/Index'))->middleware(['auth', 'verified'])->name('galeri.dashboard');
-Route::get('/galeri/create', fn() => Inertia::render('Admin/Gallery/Create'))->middleware(['auth', 'verified'])->name('galeri.create');
-Route::get('/galeri/edit', fn() => Inertia::render('Admin/Gallery/Edit'))->middleware(['auth', 'verified'])->name('galeri.edit');
-Route::get('/articles', fn() => Inertia::render('Admin/Articles/Index'))->middleware(['auth', 'verified'])->name('articles.dashboard');
-Route::get('/articles/create', fn() => Inertia::render('Admin/Articles/Create'))->middleware(['auth', 'verified'])->name('articles.create');
-Route::get('/articles/edit', fn() => Inertia::render('Admin/Articles/Edit'))->middleware(['auth', 'verified'])->name('articles.edit');
-Route::get('/potensi', fn() => Inertia::render('Admin/Potensi/Index'))->middleware(['auth', 'verified'])->name('potensi.dashboard');
-Route::get('/potensi/create', fn() => Inertia::render('Admin/Potensi/Create'))->middleware(['auth', 'verified'])->name('potensi.create');
-Route::get('/potensi/edit', fn() => Inertia::render('Admin/Potensi/Edit'))->middleware(['auth', 'verified'])->name('potensi.edit');
-Route::get('/potensi/detail', fn() => Inertia::render('Admin/Potensi/Detail'))->middleware(['auth', 'verified'])->name('potensi.detail');
-Route::get('/pamong', fn() => Inertia::render('Admin/Pamong/Index'))->middleware(['auth', 'verified'])->name('pamong.dashboard');
-Route::get('/pamong/create', fn() => Inertia::render('Admin/Pamong/Create'))->middleware(['auth', 'verified'])->name('pamong.create');
-Route::get('/pamong/edit', fn() => Inertia::render('Admin/Pamong/Edit'))->middleware(['auth', 'verified'])->name('pamong.edit');
-Route::get('/pamong/detail', fn() => Inertia::render('Admin/Pamong/Detail'))->middleware(['auth', 'verified'])->name('pamong.detail');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
+    Route::resource('/galeri', GaleryController::class);
+    Route::resource('/articles', AdminBeritaController::class);
+    Route::resource('/potensi', PotensiController::class);
+    Route::resource('/pamong', PamongController::class);
+});
 
 
 

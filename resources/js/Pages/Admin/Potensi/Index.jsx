@@ -98,7 +98,7 @@ const Index = () => {
                         <FaTrash className="inline-block mr-1" /> Hapus
                       </Link>
                       <Link
-                        href={route('potensi.detail', item.id)}
+                        href={route('potensi.show', item.id)}
                         className="px-3 py-2 mt-2 text-xs text-white bg-green-500 rounded hover:bg-green-600">
                         <FaInfoCircle className="inline-block mr-1" /> Detail
                       </Link>
