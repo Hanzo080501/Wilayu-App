@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('galeri_models', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->integer('file_size');
             $table->string('image');
             $table->timestamps();
         });

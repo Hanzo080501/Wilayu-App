@@ -46,7 +46,7 @@ Route::get('/kontak', fn() => Inertia::render('Users/Kontak'));
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
-    Route::resource('/galeri', GaleryController::class);
+    Route::resource('/galery', GaleryController::class);
     Route::resource('/articles', AdminBeritaController::class);
     Route::resource('/potensi', PotensiController::class);
     Route::resource('/pamong', PamongController::class);
